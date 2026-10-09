@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedoX - Modern Homoeopathy Clinic | Opening 2027</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2E8B57;
+            --light-green: #E8F5E9;
+            --soft-blue: #E3F2FD;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --light-gray: #F5F7FA;
+            --white: #FFFFFF;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            background: linear-gradient(to bottom, var(--white) 0%, var(--light-gray) 100%);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: var(--medium-gray);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Timer Section - FIXED LIVE TIMER */
+        .timer-section {
+            padding: 40px 0 80px;
+        }
+        
+        .timer-card {
+            background-color: var(--soft-blue);
+            border-radius: 16px;
+            padding: 40px 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timer-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--dark-gray);
+        }
+        
+        .timer-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .time-unit {
+            text-align: center;
+            min-width: 140px;
+        }
+        
+        .time-value {
+            font-family: 'Poppins', sans-serif;
+            font-size: 64px;
+            font-weight: 600;
+            display: block;
+            color: var(--dark-gray);
+            line-height: 1;
+            height: 70px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .time-value .number {
+            display: block;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .time-label {
+            font-size: 16px;
+            color: var(--medium-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+        }
+        
+        .time-separator {
+            font-size: 40px;
+            color: var(--medium-gray);
+            margin: 0 5px;
+        }
+        
+        .progress-container {
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 3px;
+            margin: 30px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-line {
+            height: 100%;
+            width: 40%;
+            background: linear-gradient(90deg, var(--primary-green) 0%, rgba(46, 139, 87, 0.7) 100%);
+            border-radius: 3px;
+            position: absolute;
+            animation: progressMove 8s infinite linear;
+        }
+        
+        @keyframes progressMove {
+            0% { left: -40%; }
+            100% { left: 100%; }
+        }
+        
+        .timer-explanation {
+            text-align: center;
+            font-size: 15px;
+            color: var(--medium-gray);
+            font-style: italic;
+            max-width: 700px;
+            margin: 30px auto 0;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Content Sections */
+        .content-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .section-description {
+            font-size: 17px;
+            color: var(--medium-gray);
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary-green);
+        }
+        
+        .card-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+        
+        /* Feedback Form */
+        .feedback-form {
+            background-color: var(--light-gray);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-gray);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 2px rgba(46, 139, 87, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .optional {
+            font-size: 14px;
+            color: var(--medium-gray);
+            font-weight: normal;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn:hover {
+            background-color: #26734a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.2);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .footer-text {
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 400px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .time-value {
+                font-size: 52px;
+            }
+            
+            .time-unit {
+                min-width: 110px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .timer-card {
+                padding: 30px 20px;
+            }
+            
+            .feedback-form {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .timer-display {
+                gap: 10px;
+            }
+            
+            .time-unit {
+                min-width: 90px;
+            }
+            
+            .time-value {
+                font-size: 44px;
+            }
+            
+            .time-separator {
+                font-size: 30px;
+            }
+            
+            .hero {
+                padding: 60px 0 40px;
+            }
+            
+            .content-section {
+                padding: 60px 0;
+            }
+        }
+        
+        /* Animation for number change */
+        @keyframes numberChange {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            51% {
+                transform: translateY(10px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .changing {
+            animation: numberChange 0.3s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                MedoX
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>MedoX – Modern Homoeopathy Clinic</h1>
+                <p>A doctor-led practice focused on ethical homoeopathy, personalized care, and calm consultations. We believe in treating root causes, not just symptoms, with a patient-first approach.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timer Section - FIXED LIVE TIMER -->
+    <section class="timer-section">
+        <div class="container">
+            <div class="timer-card">
+                <h2 class="timer-title">Preparing for Opening</h2>
+                
+                <div class="timer-display">
+                    <div class="time-unit">
+                        <span class="time-value" id="days">
+                            <span class="number">843</span>
+                        </span>
+                        <span class="time-label">Days</span>
+                    </div>
+                    
+                    <span class="time-separator">:</span>
+                    
+                    <div class="time-unit">
+                        <span class="time-value" id="hours">
+                            <span class="number">12</span>
+                        </span>
+                        <span class="time-label">Hours</span>
+                    </div>
+                    
+                    <span class="time-separator">:</span>
+                    
+                    <div class="time-unit">
+                        <span class="time-value" id="minutes">
+                            <span class="number">41</span>
+                        </span>
+                        <span class="time-label">Minutes</span>
+                    </div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-line"></div>
+                </div>
+                
+                <div class="timer-explanation">
+                    <p>This timer updates live based on your current time. MedoX is currently in its preparation phase and is expected to open towards the end of 2027.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About MedoX -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">About MedoX</h2>
+            <p class="section-description">MedoX is founded on the principle that good healthcare requires time, understanding, and a commitment to ethical practice.</p>
+            
+            <div class="card">
+                <h3 class="card-title">Root-Cause Approach</h3>
+                <p>We focus on identifying and addressing the underlying causes of health issues rather than just suppressing symptoms. Our approach is about sustainable healing.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Long-Term Healing</h3>
+                <p>True health transformation doesn't happen overnight. We work with patients on a journey toward better health, with realistic expectations and honest guidance.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">No Guaranteed Cures</h3>
+                <p>We believe in transparent medical practice. We don't promise miracles but commit to ethical prescribing, careful case analysis, and personalized treatment plans.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctor's Treatment Approach -->
+    <section class="content-section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <h2 class="section-title">Doctor's Treatment Approach</h2>
+            <p class="section-description">Every patient is unique, and so is every treatment plan at MedoX.</p>
+            
+            <div class="card">
+                <h3 class="card-title">Individualized Understanding</h3>
+                <p>We take time to understand each patient's complete health picture—physical, emotional, and lifestyle factors—before developing a treatment strategy.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Ethical Prescribing</h3>
+                <p>Medications are prescribed only when clearly indicated, in appropriate potencies, with careful attention to how each patient might respond.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Patient Education</h3>
+                <p>We believe informed patients make better health decisions. We take time to explain conditions, treatments, and expected progress clearly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Care Experience -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">What to Expect at MedoX</h2>
+            <p class="section-subtitle">A calm, respectful healthcare environment</p>
+            
+            <div class="card">
+                <h3 class="card-title">Calm Consultation</h3>
+                <p>Your first visit will be thorough and unrushed. We listen carefully to understand your health journey before discussing treatment options.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Doctor Listens First</h3>
+                <p>We begin every consultation by listening. You'll have ample time to share your health concerns, history, and goals without interruption.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Clear Explanations</h3>
+                <p>Treatment plans are explained in simple, clear language. You'll understand what to expect, potential timelines, and how to track progress.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Opening in 2027 -->
+    <section class="content-section" style="background-color: var(--soft-blue);">
+        <div class="container">
+            <h2 class="section-title">Why We're Opening in 2027</h2>
+            <p class="section-description">A clinic is more than just a room—it's systems, processes, and readiness to serve patients properly.</p>
+            
+            <div class="card">
+                <h3 class="card-title">Systems & Readiness</h3>
+                <p>We're building the administrative, technological, and clinical systems needed to provide exceptional care from day one. This takes time to do right.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Patient Trust First</h3>
+                <p>Trust is the foundation of the doctor-patient relationship. We're taking the time to build a practice that earns and maintains that trust through careful preparation.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Sustainable Practice</h3>
+                <p>We're creating a clinic that can serve patients for decades, not just a quick-start operation. This requires thoughtful planning and preparation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Feedback -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Patient Expectations & Feedback</h2>
+            <p class="section-description">Your expectations help shape this clinic. Share what matters most to you in a healthcare provider.</p>
+            
+            <div class="feedback-form">
+                <form id="feedbackForm">
+                    <div class="form-group">
+                        <label class="form-label">Name <span class="optional">(optional)</span></label>
+                        <input type="text" class="form-control" id="name" placeholder="Your name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email <span class="optional">(optional)</span></label>
+                        <input type="email" class="form-control" id="email" placeholder="Your email address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Message <span class="optional">(required)</span></label>
+                        <textarea class="form-control" id="message" placeholder="What are your expectations from a modern homoeopathy clinic? What matters most to you in healthcare?" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Share Your Expectations</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">MedoX</div>
+                    <p class="footer-text">A modern homoeopathy clinic focused on ethical practice, personalized care, and sustainable healing. Opening late 2027.</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 MedoX. All rights reserved. | "Good healthcare never rushes — but it never stops preparing."</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fixed Live Timer Implementation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set target date: December 31, 2027, 11:59:59 PM
+            const targetDate = new Date('December 31, 2027 23:59:59').getTime();
+            
+            // DOM elements for timer
+            const daysElement = document.getElementById('days');
+            const hoursElement = document.getElementById('hours');
+            const minutesElement = document.getElementById('minutes');
+            
+            // Previous values to detect changes
+            let prevDays = null;
+            let prevHours = null;
+            let prevMinutes = null;
+            
+            // Function to update the timer
+            function updateTimer() {
+                const now = new Date().getTime();
+                const timeRemaining = targetDate - now;
+                
+                // Calculate days, hours, minutes
+                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                
+                // Update display only if values changed
+                if (days !== prevDays) {
+                    updateNumberWithAnimation(daysElement, days);
+                    prevDays = days;
+                }
+                
+                if (hours !== prevHours) {
+                    updateNumberWithAnimation(hoursElement, hours);
+                    prevHours = hours;
+                }
+                
+                if (minutes !== prevMinutes) {
+                    updateNumberWithAnimation(minutesElement, minutes);
+                    prevMinutes = minutes;
+                }
+            }
+            
+            // Function to update number with animation
+            function updateNumberWithAnimation(element, newValue) {
+                const numberElement = element.querySelector('.number');
+                
+                // Add animation class
+                numberElement.classList.add('changing');
+                
+                // Update value after animation starts
+                setTimeout(() => {
+                    numberElement.textContent = newValue;
+                    
+                    // Remove animation class after animation completes
+                    setTimeout(() => {
+                        numberElement.classList.remove('changing');
+                    }, 300);
+                }, 150);
+            }
+            
+            // Initial update
+            updateTimer();
+            
+            // Update timer every minute (60000 ms) as per PRD
+            // Note: We're not updating seconds as per PRD requirements
+            setInterval(updateTimer, 60000);
+            
+            // Feedback form submission
+            const feedbackForm = document.getElementById('feedbackForm');
+            const feedbackStorageKey = 'medox_feedback';
+            
+            // Load existing feedback from localStorage
+            let feedbackList = JSON.parse(localStorage.getItem(feedbackStorageKey)) || [];
+            
+            feedbackForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+                
+                if (!message) {
+                    alert('Please share your message/expectations.');
+                    return;
+                }
+                
+                // Create feedback object
+                const feedback = {
+                    id: Date.now(),
+                    name: name || 'Anonymous',
+                    email: email || '',
+                    message: message,
+                    date: new Date().toISOString(),
+                    status: 'unreviewed'
+                };
+                
+                // Add to list and save to localStorage
+                feedbackList.unshift(feedback);
+                localStorage.setItem(feedbackStorageKey, JSON.stringify(feedbackList));
+                
+                // Show success message
+                alert('Thank you for sharing your expectations! Your feedback helps shape MedoX.');
+                
+                // Reset form
+                feedbackForm.reset();
+            });
+            
+            // Admin panel link (hidden in production, would be separate admin.html)
+            // For demo purposes, we'll add a simple admin view in console
+            console.log('Admin Panel Data Available in localStorage with key: ' + feedbackStorageKey);
+            console.log('Current feedback count: ' + feedbackList.length);
+        });
+    </script>
+</body>
+</html>
